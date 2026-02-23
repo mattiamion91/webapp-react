@@ -1,4 +1,4 @@
-import CardBook from "../components/CardMovies"
+import CardMovies from "../components/CardMovies"
 
 const HomePage = () => {
     return (
@@ -6,11 +6,12 @@ const HomePage = () => {
             <h1 className="text-primary">Bool Movies</h1>
             <h2><i>The boolean nerd movies community</i></h2>
             <div>
-                <p>qui andra elenco movies</p>
-                <CardBook />
-                <CardBook />
-                <CardBook />
-                <CardBook />
+                <p className="row row-cols-3 mt-4">
+                    <CardBook />
+                    <CardBook />
+                    <CardBook />
+                    <CardBook />
+                </p>
             </div>
         </>
     )
