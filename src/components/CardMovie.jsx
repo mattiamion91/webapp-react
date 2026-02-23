@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const CardMovies = () => {
+const CardMovie = () => {
     return (
         <div className="card mb-4">
             <img src="https://ntvb.tmsimg.com/assets/p6326_v_h8_be.jpg?w=960&h=540"
@@ -15,4 +15,4 @@ const CardMovies = () => {
     )
 }
 
-export default CardMovies
+export default CardMovie

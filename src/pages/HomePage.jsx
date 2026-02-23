@@ -1,4 +1,4 @@
-import CardMovies from "../components/CardMovies"
+import CardMovie from "../components/CardMovie"
 
 const HomePage = () => {
     return (
@@ -7,10 +7,11 @@ const HomePage = () => {
             <h2><i>The boolean nerd movies community</i></h2>
             <div>
                 <p className="row row-cols-3 mt-4">
-                    <CardBook />
-                    <CardBook />
-                    <CardBook />
-                    <CardBook />
+                <CardMovie/>
+                <CardMovie/>
+                <CardMovie/>
+                <CardMovie/>
+                <CardMovie/>
                 </p>
             </div>
         </>
