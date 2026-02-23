@@ -6,7 +6,7 @@ const MoviePage = () => {
         <>
             <header id="movie" className="border-bottom border-1 mb-3">
                 <div className="d-flex mb-3">
-                    <img src="" alt="titolo movie" />
+                    <img src="https://ntvb.tmsimg.com/assets/p6326_v_h8_be.jpg?w=960&h=540" alt="titolo movie" />
                 </div>
                 <h1>Titolo movie</h1>
                 <h3 className="text-muted"><i>By Nome regista</i></h3>

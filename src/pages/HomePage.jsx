@@ -1,3 +1,5 @@
+import CardBook from "../components/CardMovies"
+
 const HomePage = () => {
     return (
         <>
@@ -5,6 +7,10 @@ const HomePage = () => {
             <h2><i>The boolean nerd movies community</i></h2>
             <div>
                 <p>qui andra elenco movies</p>
+                <CardBook />
+                <CardBook />
+                <CardBook />
+                <CardBook />
             </div>
         </>
     )
