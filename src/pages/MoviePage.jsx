@@ -67,8 +67,7 @@ const MoviePage = () => {
             <section id="reviews">
                 <header className="d-flex justify-content-between align-items-center mb-4">
                     <h4>Our community reviews</h4>
-                </header>
-                {/* Reviews qui */}
+                </header>          
                 {renderReviews()}
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">
