@@ -1,6 +1,7 @@
 //importo le pagine
 import HomePage from "./pages/HomePage"
 import MoviePage from "./pages/MoviePage"
+import NotFoundPage from "./pages/notFoundPage"
 //importo layout
 import DefaultLayout from "./layouts/DefaultLayout"
 //importo comp libreria rotte
@@ -13,6 +14,7 @@ function App() {
         <Route element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
           <Route path="/movies/:id" element={<MoviePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

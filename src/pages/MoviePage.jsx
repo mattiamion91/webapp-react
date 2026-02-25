@@ -3,13 +3,16 @@ import axios from "axios"
 //importo state e effect
 import { useState, useEffect, use } from "react"
 //importo params
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import CardReview from "../components/CardReview"
 
 //definisco endpoint in un vat
 const endpoint = "http://localhost:3000/api/movies/";
 
 const MoviePage = () => {
+
+    //creo istanza navigate per poterlo utulizzare
+    const redirect = useNavigate()
 
     //ricavo id dimanico usado params da id url rotta
     const { id } = useParams()
@@ -22,6 +25,7 @@ const MoviePage = () => {
         axios.get(endpoint + id)
         .then(res => {setMovie(res.data)})
         .catch(err => {console.log(err);
+            if (err.status = 404) redirect("/404");
         }) 
     }
 
