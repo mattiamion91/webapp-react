@@ -1,54 +1,36 @@
-import { Link } from "react-router-dom"
+//importo axios
+import axios from "axios"
+//importo state e effect
+import { useState, useEffect, use } from "react"
+//importo params
+import { Link, useParams } from "react-router-dom"
 import CardReview from "../components/CardReview"
 
-//dati temporaneri per tesy props
-
-const movie = {
-    "id": 5,
-    "title": "Interstellar",
-    "director": "Christopher Nolan",
-    "genre": "Science Fiction",
-    "release_year": 2014,
-    "abstract": "A team of explorers travels through a wormhole in space to save humanity.",
-    "image": "titanic.jpg",
-    "created_at": "2024-11-29T10:40:13.000Z",
-    "updated_at": "2025-05-22T10:55:27.000Z",
-    "reviews": [
-        {
-            "id": 13,
-            "movie_id": 5,
-            "name": "Mia",
-            "vote": 5,
-            "text": "Visually stunning and emotionally resonant.",
-            "created_at": "2024-11-29T10:40:13.000Z",
-            "updated_at": "2024-11-29T10:40:13.000Z"
-        },
-        {
-            "id": 14,
-            "movie_id": 5,
-            "name": "Noah",
-            "vote": 3,
-            "text": "Interesting ideas but too long.",
-            "created_at": "2024-11-29T10:40:13.000Z",
-            "updated_at": "2024-11-29T10:40:13.000Z"
-        },
-        {
-            "id": 15,
-            "movie_id": 5,
-            "name": "Olivia",
-            "vote": 4,
-            "text": "A beautiful story about love and survival.",
-            "created_at": "2024-11-29T10:40:13.000Z",
-            "updated_at": "2024-11-29T10:40:13.000Z"
-        }
-    ]
-}
+//definisco endpoint in un vat
+const endpoint = "http://localhost:3000/api/movies/";
 
 const MoviePage = () => {
 
+    //ricavo id dimanico usado params da id url rotta
+    const { id } = useParams()
+
+    //var di stato per movie
+    const [movie, setMovie] = useState([])
+
+    //fetch movie (singolo) chiamata rotta show di BE
+    const fetchMovie = () => {
+        axios.get(endpoint + id)
+        .then(res => {setMovie(res.data)})
+        .catch(err => {console.log(err);
+        }) 
+    }
+
+    //evoco la funzione di fetch al montaggio della page usando useEffect
+    useEffect(fetchMovie, []);
+
     //funzione render reviews
     const renderReviews = () => {
-        return (movie.reviews.map(rev => {
+        return (movie.reviews?.map(rev => {
             return (
                 <CardReview revProp={rev} key={rev.id} />
             )
@@ -67,7 +49,7 @@ const MoviePage = () => {
             <section id="reviews">
                 <header className="d-flex justify-content-between align-items-center mb-4">
                     <h4>Our community reviews</h4>
-                </header>          
+                </header>
                 {renderReviews()}
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">

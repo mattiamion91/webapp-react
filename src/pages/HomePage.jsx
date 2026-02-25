@@ -16,7 +16,7 @@ const HomePage = () => {
     //funzione che gestisce chiamata a BE
     const fetchMovie = () => {
         axios.get(endpoint)
-        .then(res => {console.log(res.data);
+        .then(res => {setMovies(res.data);
         })
         .catch(err => {console.log(err);
         });
