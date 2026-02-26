@@ -1,10 +1,11 @@
 //importo axios
 import axios from "axios"
 //importo state e effect
-import { useState, useEffect, use } from "react"
+import { useState, useEffect } from "react"
 //importo params
 import { Link, useParams, useNavigate } from "react-router-dom"
 import CardReview from "../components/CardReview"
+import RevForm from "../components/RevForm"
 
 //definisco endpoint in un vat
 const endpoint = "http://localhost:3000/api/movies/";
@@ -55,6 +56,9 @@ const MoviePage = () => {
                     <h4>Our community reviews</h4>
                 </header>
                 {renderReviews()}
+            </section>
+            <section>
+                <RevForm book_id={book.id}/>
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">
                 <Link className="btn btn-secondary" to="/">Back to home</Link>
