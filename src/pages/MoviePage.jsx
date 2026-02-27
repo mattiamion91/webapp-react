@@ -24,10 +24,11 @@ const MoviePage = () => {
     //fetch movie (singolo) chiamata rotta show di BE
     const fetchMovie = () => {
         axios.get(endpoint + id)
-        .then(res => {setMovie(res.data)})
-        .catch(err => {console.log(err);
-            if (err.status = 404) redirect("/404");
-        }) 
+            .then(res => { setMovie(res.data) })
+            .catch(err => {
+                console.log(err);
+                if (err.status = 404) redirect("/404");
+            })
     }
 
     //evoco la funzione di fetch al montaggio della page usando useEffect
@@ -58,7 +59,7 @@ const MoviePage = () => {
                 {renderReviews()}
             </section>
             <section>
-                <RevForm movie_id={movie.id}/>
+                <RevForm movie_id={movie.id} reloadMovies={fetchMovie} />
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">
                 <Link className="btn btn-secondary" to="/">Back to home</Link>

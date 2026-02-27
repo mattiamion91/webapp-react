@@ -4,31 +4,34 @@ import { useState } from "react"
 const RevForm = (props) => {
 
     //destrutturo
-    const { movie_id } = props
+    const { movie_id, reloadMovies } = props
 
     //creo strigna riferimneto enpoint del BE
     const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`
 
-    //creo var di stato per gestire OGGETTO dei value di input
-    const [formData, setFormData] = useState({
+    //creo oggetto per valori dei default
+    const initialFormData = {
         "name": "",
         "vote": 0,
         "text": ""
-    });
+    }
 
-    //funzione gesitone chiamata al submit del form
+    //creo var di stato per gestire OGGETTO dei value di input
+    const [formData, setFormData] = useState(initialFormData);
+      
+      //funzione gesitone chiamata al submit del form
     const handleSubmit = e => {
         //inibisco comportamento default form
         e.preventDefault();
         //gestisci la chiamata in post all'endpoint in axios
         axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
-            .then(() =>{console.log('tutto ok');
+            .then(() => {
+                setFormData(initialFormData);
+                reloadMovies();
             })
-            .catch((err) => {console.log(err);
+            .catch((err) => {
+                console.log(err);
             })
-
-
-
     }
 
     //funzione dei dati del form
