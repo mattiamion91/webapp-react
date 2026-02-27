@@ -4,10 +4,10 @@ import { useState } from "react"
 const RevForm = (props) => {
 
     //destrutturo
-    const { book_id } = props
+    const { movie_id } = props
 
     //creo strigna riferimneto enpoint del BE
-    const endpoint = `http://localhost:3000/api/movies/${book_id}}/reviews`
+    const endpoint = `http://localhost:3000/api/movies/${movie_id}/reviews`
 
     //creo var di stato per gestire OGGETTO dei value di input
     const [formData, setFormData] = useState({
@@ -21,7 +21,12 @@ const RevForm = (props) => {
         //inibisco comportamento default form
         e.preventDefault();
         //gestisci la chiamata in post all'endpoint in axios
-        
+        axios.post(endpoint, formData, { headers: { 'Content-Type': 'application/json' } })
+            .then(() =>{console.log('tutto ok');
+            })
+            .catch((err) => {console.log(err);
+            })
+
 
 
     }
